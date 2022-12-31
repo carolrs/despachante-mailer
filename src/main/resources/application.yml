@@ -1,0 +1,26 @@
+spring:
+  config:
+    import: 'optional:configtree:/etc/secrets/'
+
+  # Email provider config
+  mail:
+    host: ${MAIL_HOST}
+    protocol: smtp
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      - mail.smtp.auth: true
+      - mail.smtp.starttls.enable: true
+
+  # Enable support of multi-part uploads.
+  http:
+    multipart:
+      enable: true
+      location: /
+      max-file-size: 10MB
+      max-request-size: 10MB
+      resolve-lazily: false
+
+app:
+  recipient: ${MAIL_RECIPIENT}
