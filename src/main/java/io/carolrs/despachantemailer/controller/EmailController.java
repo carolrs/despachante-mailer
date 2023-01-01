@@ -28,6 +28,6 @@ public class EmailController {
     @PostMapping(produces = APPLICATION_JSON_VALUE, headers = "content-type=multipart/form-data", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void sendEmail(@ModelAttribute FormValues formValues) throws IOException {
         Formulario formulario = objectMapper.readValue(formValues.getData(), Formulario.class);
-        emailService.sendEmail(formulario.getInputEmail(), formulario.getInputName(), formulario.getInputDetalhes(), formValues.getFiles());
+        emailService.sendEmail(formulario , formValues.getFiles());
     }
 }
